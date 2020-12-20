@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title> Open Count</title>
+    </head>
+    <body>
+        <h1> Open Account </h1>
+
+        <legend>Dados para cadastro</legend>
+        <br><br>
+        <form method="post" action="/conta" th:object="${openAccount}">
+            <fieldset>
+            <label> Nome </label>
+            <input type="text" name="nome" th:field="*{nome}"/>
+            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+            <p></p>
+            <label> Idade </label>
+            <input type="text" name="idade" th:field="*{idade}"/>
+            <p th:if="${#fields.hasErrors('idade')}" th:errors="*{idade}"></p>
+            <p></p>
+            <label> RG </label>
+            <input type="text" name="rg" th:field="*{rg}"/>
+            <p th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></p>
+            <p></p>
+            <label> CPF </label>
+            <input type="text" name="cpf" th:field="*{cpf}"/>
+            <p th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></p>
+            <br><br><br>
+            <label> Endereço </label>
+            <input type="text" name="endereco" th:field="*{endereco}"/>
+            <p th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></p>
+            <label> Cep </label>
+            <input type="text" name="cep" th:field="*{cep}"/>
+            <p th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}"></p>
+            <br> <br>
+            <button type="submit">PROXIMO</button>
+            </fieldset>
+        </form>
+    </body>
+    </html>

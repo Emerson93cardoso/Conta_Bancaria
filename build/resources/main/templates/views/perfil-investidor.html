@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Perfil do Investidor</title>
+    </head>
+    <body>
+        <h1> Cadastro de perfil de investidor </h1>
+
+        <form method="post" action="/perfil-investidor" th:object="${perfilInvestidor}">
+            <input type="hidden" name="id" th:value="${id}"/>
+            <p> Você se considera um investidor?</p>
+            <INPUT TYPE="RADIO" NAME="passivo" VALUE="passivo"> passivo
+            <INPUT TYPE="RADIO" NAME="moderado" VALUE="passivo"> moderado
+            <INPUT TYPE="RADIO" NAME="agressivo" VALUE="passivo"> agressivo
+            <br>
+            <br><br>
+            <button type="submit" >Salvar</button>
+        </form>
+
+    </body>
+</html>
