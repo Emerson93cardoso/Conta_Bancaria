@@ -2,15 +2,16 @@ package br.com.domain;
 
 public class IdConta {
 
-    private Long id;
+    private Long id_Conta;
 
     public void setId(Long id) {
-        this.id = id;
+        this.id_Conta = id;
     }
 
     public Long getId() {
-        return id;
+        return id_Conta;
     }
 }
+
 
 

@@ -4,40 +4,22 @@ package br.com.domain;
 
 public class PerfilInvestidor {
 
-    private Long id;
-    private String passivo;
-    private String moderado;
-    private String agressivo;
+    private Long id_Conta;
+    private String perfil;
 
-    public Long getId() {
-        return id;
+    public Long getId_Conta() {
+        return id_Conta;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_Conta(Long id_Conta) {
+        this.id_Conta = id_Conta;
     }
 
-    public String getPassivo() {
-        return passivo;
+    public String getPerfil() {
+        return perfil;
     }
 
-    public void setPassivo(String passivo) {
-        this.passivo = passivo;
-    }
-
-    public String getModerado() {
-        return moderado;
-    }
-
-    public void setModerado(String moderado) {
-        this.moderado = moderado;
-    }
-
-    public String getAgressivo() {
-        return agressivo;
-    }
-
-    public void setAgressivo(String agressivo) {
-        this.agressivo = agressivo;
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
 }

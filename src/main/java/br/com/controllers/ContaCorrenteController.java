@@ -1,4 +1,5 @@
 package br.com.controllers;
+
 import br.com.domain.DateCount;
 import br.com.domain.IdConta;
 import br.com.domain.PerfilInvestidor;
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -29,6 +30,7 @@ public class ContaCorrenteController {
         return "views/openAccount";
     }
 
+
     @PostMapping("/conta")
     public String saveCount(@Valid DateCount dateCount, BindingResult rs) {
         if(rs.hasErrors()) {
@@ -40,13 +42,15 @@ public class ContaCorrenteController {
 
 
     @GetMapping("/perfil-investidor")
-    public String perfilInvestidor(Model model, Long id) {
+    public String perfilInvestidor(Model model, Long idContas) {
+        Long idConta = serviceCC.idConta();
         model.addAttribute("perfilInvestidor", new PerfilInvestidor());
-        model.addAttribute("id", id);
+        model.addAttribute("id_Conta", idConta);
         return "views/perfil-investidor";
     }
 
     @PostMapping("/perfil-investidor")
+
     public String perfilInvestidor(PerfilInvestidor perfilInvestidor) {
         servicePerfilInvestidor.perfilInvestidor(perfilInvestidor);
         return "views/sucesso";

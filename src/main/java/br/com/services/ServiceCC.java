@@ -23,9 +23,9 @@ public class ServiceCC {
 
     }
 
-   public List<IdConta> idConta(Long id) {
+   public Long idConta() {
 
-        return investidorRepositoryImp.id(id);
+        return investidorRepositoryImp.id();
     }
 
 

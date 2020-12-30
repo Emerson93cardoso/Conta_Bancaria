@@ -8,11 +8,11 @@
         <h1> Cadastro de perfil de investidor </h1>
 
         <form method="post" action="/perfil-investidor" th:object="${perfilInvestidor}">
-            <input type="hidden" name="id" th:value="${id}"/>
+            <input type="hidden" name="id_Conta" th:value="${id_Conta}"/>
             <p> Você se considera um investidor?</p>
-            <INPUT TYPE="RADIO" NAME="passivo" VALUE="passivo"> passivo
-            <INPUT TYPE="RADIO" NAME="moderado" VALUE="passivo"> moderado
-            <INPUT TYPE="RADIO" NAME="agressivo" VALUE="passivo"> agressivo
+            <INPUT TYPE="RADIO" NAME="perfil" VALUE="passivo" th:field="*{perfil}"> passivo
+            <INPUT TYPE="RADIO" NAME="perfil" VALUE="moderado" th:field="*{perfil}"> moderado
+            <INPUT TYPE="RADIO" NAME="perfil" VALUE="agressivo" th:field="*{perfil}"> agressivo
             <br>
             <br><br>
             <button type="submit" >Salvar</button>

@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class IdRowMapper implements RowMapper {
+public class IdRowMapper implements RowMapper <IdConta> {
 
         @Override
         public IdConta mapRow(ResultSet rs, int rowNum) throws SQLException {
