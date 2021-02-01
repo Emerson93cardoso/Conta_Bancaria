@@ -1,7 +1,7 @@
 package br.com.services;
 
 import br.com.domain.PerfilInvestidor;
-import br.com.repository.impml.InvestidorRepositoryImp;
+import br.com.repository.impml.InvestidorImplRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 public class ServicePerfilInvestidor {
 
     @Autowired
-    private InvestidorRepositoryImp investidorRepositoryImp;
+    private InvestidorImplRepository investidorRepositoryImpl;
 
     public void perfilInvestidor(PerfilInvestidor perfilInvestidor) {
-        investidorRepositoryImp.perfilInvestidor(perfilInvestidor);
+        investidorRepositoryImpl.perfilInvestidor(perfilInvestidor);
     }
 }
