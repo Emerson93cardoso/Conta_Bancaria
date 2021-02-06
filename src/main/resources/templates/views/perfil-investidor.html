@@ -7,13 +7,21 @@
     <body>
         <h1> Cadastro de perfil de investidor </h1>
 
-        <form method="post" action="/perfil-investidor" th:object="${perfilInvestidor}">
+        <form method="post" action="perfil-investidor" th:object="${perfilInvestidor}">
             <input type="hidden" name="id_Conta" th:value="${id_Conta}"/>
             <p> Você se considera um investidor?</p>
-            <INPUT TYPE="RADIO" NAME="perfil" VALUE="passivo" th:field="*{perfil}"> passivo
-            <INPUT TYPE="RADIO" NAME="perfil" VALUE="moderado" th:field="*{perfil}"> moderado
-            <INPUT TYPE="RADIO" NAME="perfil" VALUE="agressivo" th:field="*{perfil}"> agressivo
+            <INPUT TYPE="RADIO" NAME="perfil" VALUE="passivo" th:field="*{perfil}"> Passivo <br>
+            <INPUT TYPE="RADIO" NAME="perfil" VALUE="moderado" th:field="*{perfil}"> Moderado <br>
+            <INPUT TYPE="RADIO" NAME="perfil" VALUE="agressivo" th:field="*{perfil}"> Agressivo <br>
             <br>
+            <p> O que você prioriza na hora de investir?</p>
+            <INPUT TYPE="RADIO" NAME="priorizacaoInvestimento" VALUE=" Rentabilidade e Diversificação" th:field="*{priorizacaoInvestimento}"> Rentabilidade e Diversificação <br>
+            <INPUT TYPE="RADIO" NAME="priorizacaoInvestimento" VALUE="Segurança e Tranquilidade" th:field="*{priorizacaoInvestimento}"> Segurança e Tranquilidade <br>
+            <br>
+            <p>Qual o seu objetivo ao investir?</p>
+            <INPUT TYPE="RADIO" NAME="objetivoInvestir" value="Preservar capital" th:field="*{objetivoInvestir}"> Preservar capital <br>
+            <INPUT TYPE="RADIO" NAME="objetivoInvestir" value="Acumular recursos" th:field="*{objetivoInvestir}"> Acumular recursos <br>
+            <INPUT TYPE="RADIO" NAME="objetivoInvestir" value="Especular para alto rendimento" th:field="*{objetivoInvestir}"> Especular para alto rendimento <br>
             <br><br>
             <button type="submit" >Salvar</button>
         </form>
