@@ -9,7 +9,7 @@
 
         <legend>Dados para cadastro</legend>
         <br><br>
-        <form method="post" action="/conta" th:object="${openAccount}">
+        <form method="post" action="/abertura-conta"  th:object="${openAccount}">
             <fieldset>
             <label> Nome </label>
             <input type="text" name="nome" th:field="*{nome}"/>
@@ -37,5 +37,6 @@
             <button type="submit">PROXIMO</button>
             </fieldset>
         </form>
+
     </body>
     </html>

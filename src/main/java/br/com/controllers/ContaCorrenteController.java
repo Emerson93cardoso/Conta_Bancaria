@@ -11,10 +11,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import javax.validation.Valid;
 
-@RequestMapping("/conta")
 @Controller
+@RequestMapping("/abertura-conta")
 public class ContaCorrenteController {
 
     @Autowired
@@ -28,7 +29,6 @@ public class ContaCorrenteController {
         return "views/abrirConta";
     }
 
-
     @PostMapping()
     public String saveCount(@Valid DadosPessoasConta dadosPessoasConta, BindingResult rs, Model model) {
         if(rs.hasErrors()) {
@@ -37,19 +37,23 @@ public class ContaCorrenteController {
         Long id = serviceConta.saveDate(dadosPessoasConta);
         model.addAttribute("perfilInvestidor", new PerfilInvestidor());
         model.addAttribute("id_Conta", id);
+        model.addAttribute("dadosPessoasConta", dadosPessoasConta.getNome());
 
-        return "views/redirect-investidor";
-    }
-
-    @GetMapping("/perfil-investidor")
-    public String perfilInvestidor(Model model, Long idContas) {
-        model.addAttribute("perfilInvestidor", new PerfilInvestidor());
-        model.addAttribute("id_Conta", idContas);
         return "views/perfil-investidor";
+
     }
+
+//    @GetMapping("/perfil-investidor")
+//    public String perfilInvestidor(Model model, Long idContas, String nome) {
+//        model.addAttribute("perfilInvestidor", new PerfilInvestidor());
+//        model.addAttribute("id_Conta", idContas);
+//        model.addAttribute("dadosPessoasConta", nome);
+//        return "views/perfil-investidor";
+//    }
 
     @PostMapping("/perfil-investidor")
-    public String perfilInvestidor(PerfilInvestidor perfilInvestidor) {
+    public String perfilInvestidor(PerfilInvestidor perfilInvestidor, String dadosPessoasConta, Model model) {
+        model.addAttribute("dadosPessoasConta", dadosPessoasConta);
         servicePerfilInvestidor.perfilInvestidor(perfilInvestidor);
         return "views/sucesso";
     }

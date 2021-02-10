@@ -19,6 +19,7 @@ public class DadosPessoasConta {
     @NotEmpty(message = "Favor preencher CEP")
     private String cep;
 
+
     public String getNome() {
         return nome;
     }
