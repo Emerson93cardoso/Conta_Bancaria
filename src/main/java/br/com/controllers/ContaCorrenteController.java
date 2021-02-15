@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+
 @Controller
 @RequestMapping("/abertura-conta")
 public class ContaCorrenteController {
@@ -25,7 +26,9 @@ public class ContaCorrenteController {
 
     @GetMapping()
     public String openAccount(Model model) {
-        model.addAttribute("openAccount", new DadosPessoasConta());
+        Integer numeroConta = serviceConta.numeroConta();
+        model.addAttribute("abrirConta", new DadosPessoasConta());
+        model.addAttribute("numeroConta", numeroConta);
         return "views/abrirConta";
     }
 
@@ -37,23 +40,17 @@ public class ContaCorrenteController {
         Long id = serviceConta.saveDate(dadosPessoasConta);
         model.addAttribute("perfilInvestidor", new PerfilInvestidor());
         model.addAttribute("id_Conta", id);
-        model.addAttribute("dadosPessoasConta", dadosPessoasConta.getNome());
+        model.addAttribute("numeroConta", dadosPessoasConta.getNumeroConta());
+        model.addAttribute("nome", dadosPessoasConta.getNome());
 
         return "views/perfil-investidor";
 
     }
 
-//    @GetMapping("/perfil-investidor")
-//    public String perfilInvestidor(Model model, Long idContas, String nome) {
-//        model.addAttribute("perfilInvestidor", new PerfilInvestidor());
-//        model.addAttribute("id_Conta", idContas);
-//        model.addAttribute("dadosPessoasConta", nome);
-//        return "views/perfil-investidor";
-//    }
-
     @PostMapping("/perfil-investidor")
-    public String perfilInvestidor(PerfilInvestidor perfilInvestidor, String dadosPessoasConta, Model model) {
-        model.addAttribute("dadosPessoasConta", dadosPessoasConta);
+    public String perfilInvestidor(PerfilInvestidor perfilInvestidor, String nome, Integer numeroConta, Model model) {
+        model.addAttribute("nome", nome);
+        model.addAttribute("numeroConta", numeroConta);
         servicePerfilInvestidor.perfilInvestidor(perfilInvestidor);
         return "views/sucesso";
     }

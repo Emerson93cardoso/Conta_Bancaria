@@ -8,33 +8,47 @@
         <h1>Abertura de conta</h1>
 
         <legend>Dados para cadastro</legend>
+        <hr/><hr/>
         <br><br>
-        <form method="post" action="/abertura-conta"  th:object="${openAccount}">
+
+
+        <form method="post" action="/abertura-conta"  th:object="${abrirConta}">
+            <input type="text" name="numeroConta" th:value="${numeroConta}"/>
             <fieldset>
-            <label> Nome </label>
-            <input type="text" name="nome" th:field="*{nome}"/>
-            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-            <p></p>
-            <label> Idade </label>
-            <input type="text" name="idade" th:field="*{idade}"/>
-            <p th:if="${#fields.hasErrors('idade')}" th:errors="*{idade}"></p>
-            <p></p>
-            <label> RG </label>
-            <input type="text" name="rg" th:field="*{rg}"/>
-            <p th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></p>
-            <p></p>
-            <label> CPF </label>
-            <input type="text" name="cpf" th:field="*{cpf}"/>
-            <p th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></p>
-            <br><br><br>
-            <label> Endereço </label>
-            <input type="text" name="endereco" th:field="*{endereco}"/>
-            <p th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></p>
-            <label> Cep </label>
-            <input type="text" name="cep" th:field="*{cep}"/>
-            <p th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}"></p>
-            <br> <br>
-            <button type="submit">PROXIMO</button>
+                <table>
+                <tr>
+                    <td align="right"> Nome: </td>
+                    <td align="left"> <input type="text" name="nome" th:field="*{nome}" placeholder="Digite seu nome*"/></td>
+                    <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+                </tr>
+                <tr>
+                    <td align="right"> Idade: </td>
+                    <td align="left"><input type="text" name="idade" th:field="*{idade}" placeholder="Digite sua idade*"/></td>
+                    <p th:if="${#fields.hasErrors('idade')}" th:errors="*{idade}"></p>
+                </tr>
+                <tr>
+                    <td align="right"> RG: </td>
+                    <td align="left"><input type="text" name="rg" th:field="*{rg}" placeholder="Digite seu RG*"/></td>
+                    <p th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></p>
+                </tr>
+                <tr>
+                    <td align="right"> CPF: </td>
+                    <td align="left"> <input type="text" name="cpf" th:field="*{cpf}" placeholder="Digite seu CPF*"/></td>
+                    <p th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></p>
+                </tr>
+                <tr>
+                    <td align="right">Endereço: </td>
+                    <td align="left"> <input type="text" name="endereco" th:field="*{endereco}" placeholder="Digite seu endereço*"/></td>
+                    <p th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></p>
+                </tr>
+                <tr>
+                    <td align="right"> Cep: </td>
+                    <td align="left"><input type="text" name="cep" th:field="*{cep}" placeholder="Digite seu cep*"/></td>
+                    <p th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}"></p>
+                </tr>
+                </table>
+                <br><br>
+                <button type="submit">PROXIMO</button>
             </fieldset>
         </form>
 

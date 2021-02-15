@@ -6,13 +6,14 @@
     </head>
     <body>
         <h1> Cadastro de perfil de investidor </h1>
-        <div th:object="${dadosPessoasConta}">
-            <h2>Seja bem vindo(a) <span th:text="${dadosPessoasConta}">nome</span> favor preencher o questionario abaixo</h2>
+        <div th:object="${nome}">
+            <h2>Seja bem vindo(a) <span th:text="${nome}">nome</span> favor preencher o questionario abaixo.</h2>
         </div>
 
         <form method="post" action="abertura-conta/perfil-investidor" th:object="${perfilInvestidor}">
+            <INPUT type="hidden" name="numeroConta" th:value="${numeroConta}"/>
             <input type="hidden" name="id_Conta" th:value="${id_Conta}"/>
-            <input type="hidden" name="dadosPessoasConta" th:value="${dadosPessoasConta}"/>
+            <input type="hidden" name="nome" th:value="${nome}"/>
             <p> Você se considera um investidor?</p>
             <INPUT TYPE="RADIO" NAME="perfil" VALUE="passivo" th:field="*{perfil}"> Passivo <br>
             <INPUT TYPE="RADIO" NAME="perfil" VALUE="moderado" th:field="*{perfil}"> Moderado <br>

@@ -7,8 +7,11 @@
 
     </head>
     <body>
-    <div th:object="${dadosPessoasConta}">
-    <p>Parabéns <span th:text="${dadosPessoasConta}">nome</span> a abertura da sua conta foi realizada com sucesso</p>
+    <div th:object="${nome}">
+    <p>Parabéns <b><span th:text="${nome}">nome</span></b> a abertura da sua conta foi realizada com sucesso.</p>
+    </div>
+    <div th:object="${numeroConta}">
+        <p>Numero da Conta: <b><span th:text="${numeroConta}"></span></b></p>
     </div>
     <a href="/">Inicio</a>
     </body>

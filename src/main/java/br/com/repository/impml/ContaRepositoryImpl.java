@@ -17,7 +17,7 @@ public class ContaRepositoryImpl implements ContaRepsitory {
 
     @Override
     public Long saveContaCorrente(DadosPessoasConta dadosPessoasConta) {
-        String sql = "insert into conta_corrente(nome, cpf, idade, rg, endereco, cep) values(?, ?, ?, ?, ?, ?)";
+        String sql = "insert into conta_corrente(nome, cpf, idade, rg, endereco, cep, numero_conta) values(?, ?, ?, ?, ?, ?, ?)";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(con -> {
             PreparedStatement ps =  con.prepareStatement(sql, new String[]{"ID"});
@@ -27,6 +27,7 @@ public class ContaRepositoryImpl implements ContaRepsitory {
             ps.setString(4, dadosPessoasConta.getRg());
             ps.setString(5, dadosPessoasConta.getEndereco());
             ps.setString(6, dadosPessoasConta.getCep());
+            ps.setInt(7, dadosPessoasConta.getNumeroConta());
             return ps;
         }, keyHolder);
 

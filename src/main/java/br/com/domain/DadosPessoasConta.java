@@ -18,7 +18,15 @@ public class DadosPessoasConta {
     private String endereco;
     @NotEmpty(message = "Favor preencher CEP")
     private String cep;
+    private Integer numeroConta;
 
+    public void setNumeroConta(Integer numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public Integer getNumeroConta() {
+        return numeroConta;
+    }
 
     public String getNome() {
         return nome;
