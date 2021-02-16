@@ -13,7 +13,7 @@
 
 
         <form method="post" action="/abertura-conta"  th:object="${abrirConta}">
-            <input type="text" name="numeroConta" th:value="${numeroConta}"/>
+            <input type="hidden" name="numeroConta" th:value="${numeroConta}"/>
             <fieldset>
                 <table>
                 <tr>

@@ -2,6 +2,7 @@ package br.com.controllers;
 
 import br.com.domain.DadosPessoasConta;
 import br.com.domain.PerfilInvestidor;
+import br.com.domain.Transacoes;
 import br.com.services.ServiceConta;
 import br.com.services.ServicePerfilInvestidor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.validation.Valid;
 
 
@@ -55,6 +55,17 @@ public class ContaCorrenteController {
         return "views/sucesso";
     }
 
+    @GetMapping("/trasacoes")
+    public String transacoes(Model model) {
+           model.addAttribute("transacoes", new Transacoes());
+        return "viewa/trasacoes";
+    }
+
+    @PostMapping("/transacoes")
+    public String salvartransacoes(Transacoes transacoes) {
+        serviceConta.creditar(transacoes);
+        return "views/sucesso";
+    }
 
 }
 

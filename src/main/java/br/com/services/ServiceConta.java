@@ -1,6 +1,7 @@
 package br.com.services;
 
 import br.com.domain.DadosPessoasConta;
+import br.com.domain.Transacoes;
 import br.com.repository.ContaRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,9 @@ public class ServiceConta {
         return random.nextInt((10000 - 1000) + 1) + 1000;
     }
 
+    public void creditar(Transacoes transacoes) {
+        contaRepsitory.creditar(transacoes);
+    }
 
 
 

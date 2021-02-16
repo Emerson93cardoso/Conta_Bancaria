@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http//:thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Trasações financeiras</title>
+    </head>
+    <body>
+        <form method="post" action="abertura-conta/transacoes" th:object="${transacoes}">
+            <label> Deposito:</label>
+            <input type="text" name="transacoes" th:field="*{credito}">
+            <br><br>
+            <button type="submit">OK</button>
+        </form>
+    </body>
+</html>

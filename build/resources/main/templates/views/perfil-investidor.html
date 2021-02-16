@@ -7,7 +7,7 @@
     <body>
         <h1> Cadastro de perfil de investidor </h1>
         <div th:object="${nome}">
-            <h2>Seja bem vindo(a) <span th:text="${nome}">nome</span> favor preencher o questionario abaixo.</h2>
+            <p>Seja bem vindo(a) <b><span th:text="${nome}">nome</span></b> favor preencher o questionario abaixo.</p>
         </div>
 
         <form method="post" action="abertura-conta/perfil-investidor" th:object="${perfilInvestidor}">

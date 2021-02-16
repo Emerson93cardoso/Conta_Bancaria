@@ -1,6 +1,7 @@
 package br.com.repository.impml;
 
 import br.com.domain.DadosPessoasConta;
+import br.com.domain.Transacoes;
 import br.com.repository.ContaRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -34,7 +35,11 @@ public class ContaRepositoryImpl implements ContaRepsitory {
         return keyHolder.getKey().longValue();
     }
 
-
+    @Override
+    public void creditar(Transacoes transacoes) {
+        jdbcTemplate.update("INSERT INTO transacoes(numero_conta, credito), value(?, ?)",
+                transacoes.getNumeroConta(),transacoes.getCredito());
+    }
 
 
 }
