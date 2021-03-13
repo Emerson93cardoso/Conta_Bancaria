@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <h3>Extrato</h3>
+    <table border=2>
+        <tr>
+            <th>Conta</th>
+            <th>Deposito</th>
+            <th>Saque</th>
+            <th>Data</th>
+        </tr>
+        <tr th:each="transacoes: ${listaTransacoes}">
+            <td th:text="${transacoes.numeroConta}"></td>
+            <td th:text="${transacoes.credito}"></td>
+            <td th:text="${transacoes.debito}"></td>
+            <td th:text="${transacoes.dateTime}"></td>
+        </tr>
+    </table>
+    </body>
+    </html>

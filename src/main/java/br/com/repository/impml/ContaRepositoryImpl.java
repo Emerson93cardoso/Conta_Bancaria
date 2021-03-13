@@ -8,7 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Repository
 public class ContaRepositoryImpl implements ContaRepsitory {
@@ -36,10 +38,28 @@ public class ContaRepositoryImpl implements ContaRepsitory {
     }
 
     @Override
-    public void creditar(Transacoes transacoes) {
-        jdbcTemplate.update("INSERT INTO transacoes(numero_conta, credito), value(?, ?)",
-                transacoes.getNumeroConta(),transacoes.getCredito());
+    public List<Transacoes> salvarperacoesContaReturnTotal(Transacoes transacoes) throws SQLException {
+        jdbcTemplate.update("insert into transacoes(numero_conta, credito, debito, data) value(?, ?, ?, ?)",
+                transacoes.getNumeroConta(), transacoes.getCredito(), transacoes.getDebito(), transacoes.getDateTime());
+
+        return jdbcTemplate.query("select * from transacoes", (rs, rowNum) ->
+                new Transacoes(rs.getDouble("credito"), rs.getDouble("debito")));
     }
+
+    @Override
+    public List<Transacoes> operacoesConta() throws SQLException {
+
+        return jdbcTemplate.query("SELECT * FROM transacoes", (rs, rowNum) ->
+                new Transacoes(rs.getInt("numero_conta"),
+                        rs.getDouble("credito"), rs.getDouble("debito"), rs.getString("data")));
+
+
+
+
+
+        }
+
+
 
 
 }

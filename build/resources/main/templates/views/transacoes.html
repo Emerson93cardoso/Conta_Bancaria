@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http//:thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Trasações financeiras</title>
     </head>
     <body>
-        <form method="post" action="abertura-conta/transacoes" th:object="${transacoes}">
-            <label> Deposito:</label>
-            <input type="text" name="transacoes" th:field="*{credito}">
-            <br><br>
-            <button type="submit">OK</button>
+        <form method="post" action="transacoes" th:object="${transacoes}">
+            <fieldset style="width: 50%;"><legend>Realize uma transação</legend>
+                <table>
+                    <br>
+                    <tr>
+                        <td align="rigth">Saque:</td>
+                        <td align="left"><input style="width:30%" type="text" name="transacoes" th:field="*{debito}"></td>
+                    </tr>
+                    <tr>
+                        <td align="rigth"> Deposito:</td>
+                        <td align="left"><input style="width:30%" type="text" name="transacoes" th:field="*{credito}"></td>
+                    </tr>
+                    <tr>
+                      <td align="rigth">Numero da conta:</td>
+                      <td align="left"><input style="width:30%" type="text" name="transacoes" th:field="*{numeroConta}"></td>
+                    </tr>
+                </table>
+                <br>
+                <div align="center">Saldo</div>
+                <p align="center"><input type="text" style="text-align:center;" name="saldoTotal" th:value="${saldoTotal}"/></p>
+                <button type="submit">OK</button>
+            </fieldset>
         </form>
+        <b></b>
     </body>
 </html>

@@ -6,6 +6,7 @@ import br.com.domain.Transacoes;
 import br.com.services.ServiceConta;
 import br.com.services.ServicePerfilInvestidor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Controller
@@ -29,6 +34,7 @@ public class ContaCorrenteController {
         Integer numeroConta = serviceConta.numeroConta();
         model.addAttribute("abrirConta", new DadosPessoasConta());
         model.addAttribute("numeroConta", numeroConta);
+
         return "views/abrirConta";
     }
 
@@ -55,16 +61,17 @@ public class ContaCorrenteController {
         return "views/sucesso";
     }
 
-    @GetMapping("/trasacoes")
+    @GetMapping("/transacoes")
     public String transacoes(Model model) {
            model.addAttribute("transacoes", new Transacoes());
-        return "viewa/trasacoes";
+        return "views/transacoes";
     }
 
     @PostMapping("/transacoes")
-    public String salvartransacoes(Transacoes transacoes) {
-        serviceConta.creditar(transacoes);
-        return "views/sucesso";
+    public String salvartransacoes(Transacoes transacoes, Model model) throws SQLException {
+     Double saldototal = serviceConta.operacoesConta(transacoes);
+     model.addAttribute("saldoTotal", saldototal);
+        return "views/transacoes";
     }
 
 }
